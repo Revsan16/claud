@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tamil Transcriber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&family=DM+Mono:wght@400;500&family=Noto+Sans+Tamil:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/web/style.css">
+</head>
+<body>
+
+<header class="masthead">
+  <p class="kicker">Runs on this Mac &middot; No API key</p>
+  <h1>Tamil Transcriber</h1>
+  <p class="lede">Paste a YouTube link. Get the Tamil transcript, an English
+    translation, subtitle files and a short summary.</p>
+</header>
+
+<main>
+
+  <section class="section" id="new-job">
+    <form id="job-form" autocomplete="off">
+      <label class="field">
+        <span class="field-label">YouTube link</span>
+        <input type="url" id="url" name="url" placeholder="https://www.youtube.com/watch?v=..." required>
+      </label>
+
+      <div class="options">
+        <label class="opt">
+          <span class="field-label">Model</span>
+          <select id="model">
+            <option value="medium" selected>Medium &mdash; balanced</option>
+            <option value="small">Small &mdash; faster, rougher</option>
+            <option value="large-v3">Large&#8209;v3 &mdash; best, slow</option>
+          </select>
+        </label>
+        <label class="opt">
+          <span class="field-label">Tamil style</span>
+          <select id="tamil_mode">
+            <option value="fluent" selected>Fluent &mdash; Claude writes it</option>
+            <option value="verbatim">Verbatim &mdash; Whisper's own Tamil</option>
+          </select>
+        </label>
+        <label class="check" id="english-wrap" hidden>
+          <input type="checkbox" id="english" checked>
+          <span>English translation</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="summary" checked>
+          <span>Summary</span>
+        </label>
+      </div>
+
+      <button type="submit" id="go">Transcribe</button>
+      <p class="form-error" id="form-error" hidden></p>
+    </form>
+  </section>
+
+  <div class="rule"><span>Transcripts</span></div>
+
+  <section class="section" id="list-section">
+    <p class="empty" id="empty">Nothing yet. Your finished transcripts will collect here.</p>
+    <div id="jobs"></div>
+  </section>
+
+</main>
+
+<div class="viewer" id="viewer" hidden>
+  <div class="viewer-inner">
+    <button class="close" id="viewer-close" aria-label="Close">&times;</button>
+    <p class="kicker" id="v-channel"></p>
+    <h2 id="v-title"></h2>
+    <div class="tabs" id="v-tabs"></div>
+    <div class="tab-body" id="v-body"></div>
+    <div class="viewer-actions">
+      <button id="v-copy">Copy text</button>
+      <a id="v-download" class="btn-link" href="#" download>Download this file</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Audio never leaves this Mac. Transcript text is sent to Claude to write the Tamil and the summary. &copy; <span id="year"></span></p>
+</footer>
+
+<script src="/web/app.js"></script>
+</body>
+</html>

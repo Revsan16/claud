@@ -1,0 +1,11 @@
+# Python environment created by setup.command - 243 MB, rebuilt by setup, never committed
+.venv/
+__pycache__/
+*.pyc
+
+# Finished transcripts. These are transcriptions of other people's videos and
+# are generated output, not source. Keep them off GitHub.
+data/
+
+# macOS
+.DS_Store
